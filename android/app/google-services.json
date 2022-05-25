@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "1000776229217",
+    "project_id": "ciwalk",
+    "storage_bucket": "ciwalk.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1000776229217:android:925ef4206ae6cb7722e520",
+        "android_client_info": {
+          "package_name": "com.chocodev.ciwalk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1000776229217-dq8okp6abahlmu07bk8md06mcis95knq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDmDhXoxCjKBjPUSf9HB5eYkKURqvR3bdE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1000776229217-dq8okp6abahlmu07bk8md06mcis95knq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1000776229217-qs5o6bk3f4duvtc894t1bvu5809o37b7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.chocodev.ciwalk"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
