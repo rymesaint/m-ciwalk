@@ -1,7 +1,5 @@
-import 'package:collection/collection.dart';
+import 'package:ciwalk/src/data/models/thumbnail.dart';
 import 'package:intl/intl.dart';
-
-import 'thumbnail.dart';
 
 class Event {
   String? type;
@@ -34,7 +32,7 @@ class Event {
         slug: data['slug'] as String?,
         thumbnail: data['thumbnail'] == null
             ? null
-            : Thumbnail.fromMap(data['thumbnail'] as Map<String, dynamic>),
+            : Thumbnail.fromJson(data['thumbnail'] as Map<String, dynamic>),
       );
 
   Map<String, dynamic> toMap() => {
@@ -45,16 +43,8 @@ class Event {
         'started': started,
         'ended': ended,
         'slug': slug,
-        'thumbnail': thumbnail?.toMap(),
+        'thumbnail': thumbnail?.toJson(),
       };
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(other, this)) return true;
-    if (other is! Event) return false;
-    final mapEquals = const DeepCollectionEquality().equals;
-    return mapEquals(other.toMap(), toMap());
-  }
 
   String get startedFormat =>
       DateFormat('d MMMM yyyy').format(DateTime.tryParse(started.toString())!);
@@ -67,15 +57,4 @@ class Event {
       : DateTime.now().isAfter(DateTime.tryParse(ended.toString())!) == true
           ? 'Finished'
           : '$startedFormat - $endedFormat';
-
-  @override
-  int get hashCode =>
-      type.hashCode ^
-      id.hashCode ^
-      title.hashCode ^
-      summary.hashCode ^
-      started.hashCode ^
-      ended.hashCode ^
-      slug.hashCode ^
-      thumbnail.hashCode;
 }

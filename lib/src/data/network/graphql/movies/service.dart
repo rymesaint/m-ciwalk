@@ -6,6 +6,13 @@ import 'package:ciwalk/src/data/network/graphql/movies/schema.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
 class MovieService {
+  late GraphQLClient _client;
+
+  MovieService() {
+    GraphQLConfig graphQLConfiguration = GraphQLConfig();
+    _client = graphQLConfiguration.getClient();
+  }
+
   Future<Resource<List<Movie>>> getMovies({
     int? start,
     int? limit,
@@ -15,8 +22,6 @@ class MovieService {
   }) async {
     List<Movie> movies = [];
 
-    GraphQLConfig graphQLConfiguration = GraphQLConfig();
-    GraphQLClient _client = graphQLConfiguration.getClient();
     QueryResult result = await _client.query(
       QueryOptions(
         document: gql(getMoviesQuery),
@@ -60,8 +65,6 @@ class MovieService {
   Future<Resource<MovieDetail>> getMovieDetails({String? id}) async {
     MovieDetail movieDetail = MovieDetail();
 
-    GraphQLConfig graphQLConfiguration = GraphQLConfig();
-    GraphQLClient _client = graphQLConfiguration.getClient();
     QueryResult result = await _client.query(
       QueryOptions(
         document: gql(getMovieDetailsQuery),

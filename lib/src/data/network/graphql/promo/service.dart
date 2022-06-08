@@ -6,6 +6,13 @@ import 'package:ciwalk/src/data/network/graphql/promo/schema.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
 class PromoService {
+  late GraphQLClient _client;
+
+  PromoService() {
+    GraphQLConfig graphQLConfiguration = GraphQLConfig();
+    _client = graphQLConfiguration.getClient();
+  }
+
   Future<Resource<List<Promo>>> getPromos({
     int? start,
     int? limit,
@@ -15,16 +22,19 @@ class PromoService {
   }) async {
     List<Promo> promos = [];
 
-    GraphQLConfig graphQLConfiguration = GraphQLConfig();
-    GraphQLClient _client = graphQLConfiguration.getClient();
     QueryResult result = await _client.query(
       QueryOptions(
         document: gql(getPromosQuery),
         variables: {
           "limit": limit,
           "start": start,
-          "type": type,
-          "query": query,
+          "where": {
+            "title_contains": query,
+            "tags": const {"slug_contains": null},
+            "_id_ne": null,
+            "type": type,
+            "tenant": const {"slug_contains": null},
+          },
           "sortBy": sortBy,
         },
       ),
@@ -60,8 +70,6 @@ class PromoService {
   Future<Resource<PromoDetail>> getPromoDetails({String? id}) async {
     PromoDetail promoDetail = PromoDetail();
 
-    GraphQLConfig graphQLConfiguration = GraphQLConfig();
-    GraphQLClient _client = graphQLConfiguration.getClient();
     QueryResult result = await _client.query(
       QueryOptions(
         document: gql(getPromoDetailsQuery),

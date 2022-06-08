@@ -1,8 +1,8 @@
+import 'package:ciwalk/src/data/models/tenant/tenant.dart';
+import 'package:ciwalk/src/data/models/thumbnail.dart';
 import 'package:intl/intl.dart';
 
 import 'tag.dart';
-import 'tenant.dart';
-import 'thumbnail.dart';
 
 class PromoDetail {
   String? id;
@@ -73,11 +73,14 @@ class PromoDetail {
         'tenant': tenant?.toJson(),
       };
 
-  String get startedFormat =>
-      DateFormat('d MMMM yyyy').format(DateTime.tryParse(started.toString())!);
+  String get startedFormat => started == null
+      ? ''
+      : DateFormat('d MMMM yyyy')
+          .format(DateTime.tryParse(started.toString())!);
 
-  String get endedFormat =>
-      DateFormat('d MMMM yyyy').format(DateTime.tryParse(ended.toString())!);
+  String get endedFormat => ended == null
+      ? ''
+      : DateFormat('d MMMM yyyy').format(DateTime.tryParse(ended.toString())!);
 
   String? get statusPromo => ended == null
       ? 'Finished'

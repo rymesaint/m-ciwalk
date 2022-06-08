@@ -6,6 +6,13 @@ import 'package:ciwalk/src/data/network/graphql/events/schema.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
 class EventService {
+  late GraphQLClient _client;
+
+  EventService() {
+    GraphQLConfig graphQLConfiguration = GraphQLConfig();
+    _client = graphQLConfiguration.getClient();
+  }
+
   Future<Resource<List<Event>>> getEvents({
     int? start,
     int? limit,
@@ -15,18 +22,21 @@ class EventService {
   }) async {
     List<Event> events = [];
 
-    GraphQLConfig graphQLConfiguration = GraphQLConfig();
-    GraphQLClient _client = graphQLConfiguration.getClient();
     QueryResult result = await _client.query(
       QueryOptions(
         document: gql(getEventsQuery),
         variables: {
           "limit": limit,
           "start": start,
-          "type": type,
-          "query": query,
+          "where": {
+            "title_contains": query,
+            "tags": const {"slug_contains": null},
+            "_id_ne": null,
+            "type_contains": type
+          },
           "sortBy": sortBy,
         },
+        fetchPolicy: FetchPolicy.noCache,
       ),
     );
 
@@ -60,8 +70,6 @@ class EventService {
   Future<Resource<EventDetail>> getEventDetails({String? id}) async {
     EventDetail eventDetail = EventDetail();
 
-    GraphQLConfig graphQLConfiguration = GraphQLConfig();
-    GraphQLClient _client = graphQLConfiguration.getClient();
     QueryResult result = await _client.query(
       QueryOptions(
         document: gql(getEventDetailsQuery),

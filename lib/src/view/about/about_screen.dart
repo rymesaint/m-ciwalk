@@ -34,6 +34,8 @@ class AboutScreen extends GetView<AboutViewModel> {
             .center
             .make(),
         ListView(
+          shrinkWrap: true,
+          scrollDirection: Axis.horizontal,
           children: [
             CachedNetworkImage(
                     imageUrl:
@@ -51,8 +53,6 @@ class AboutScreen extends GetView<AboutViewModel> {
                 .w(180)
                 .p4(),
           ],
-          shrinkWrap: true,
-          scrollDirection: Axis.horizontal,
         ).h(200),
         UiSpacer.verticalSpace(),
         'The Architecture Designing Buildings with Unique Value'

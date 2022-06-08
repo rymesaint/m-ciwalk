@@ -1,4 +1,4 @@
-import 'thumbnail.dart';
+import 'package:ciwalk/src/data/models/thumbnail.dart';
 
 class MovieDetail {
   String? id;

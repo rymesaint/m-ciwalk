@@ -8,6 +8,7 @@ import 'package:ciwalk/src/repositories/promo.dart';
 import 'package:ciwalk/src/view/about/about_screen.dart';
 import 'package:ciwalk/src/view/events/event_detail_screen.dart';
 import 'package:ciwalk/src/view/events/events_screen.dart';
+import 'package:ciwalk/src/view/maps/map_screen.dart';
 import 'package:ciwalk/src/view/movies/movie_detail_screen.dart';
 import 'package:ciwalk/src/view/movies/movies_screen.dart';
 import 'package:ciwalk/src/view/promo/promo_detail_screen.dart';
@@ -86,5 +87,9 @@ class HomepageViewModel extends BaseViewModel {
 
   openAbout() {
     Get.toNamed(AboutScreen.routeName);
+  }
+
+  openMap() {
+    Get.toNamed(MapScreen.routeName);
   }
 }

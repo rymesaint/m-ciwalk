@@ -1,8 +1,6 @@
-import 'package:collection/collection.dart';
+import 'package:ciwalk/src/data/models/tenant/tenant.dart';
+import 'package:ciwalk/src/data/models/thumbnail.dart';
 import 'package:intl/intl.dart';
-
-import 'tenant.dart';
-import 'thumbnail.dart';
 
 class Promo {
   String? id;
@@ -55,14 +53,6 @@ class Promo {
         'tenant': tenant?.toJson(),
       };
 
-  @override
-  bool operator ==(Object other) {
-    if (identical(other, this)) return true;
-    if (other is! Promo) return false;
-    final mapEquals = const DeepCollectionEquality().equals;
-    return mapEquals(other.toJson(), toJson());
-  }
-
   String get startedFormat =>
       DateFormat('d MMMM yyyy').format(DateTime.tryParse(started.toString())!);
 
@@ -74,16 +64,4 @@ class Promo {
       : DateTime.now().isAfter(DateTime.tryParse(ended.toString())!) == true
           ? 'Finished'
           : '$startedFormat - $endedFormat';
-
-  @override
-  int get hashCode =>
-      id.hashCode ^
-      title.hashCode ^
-      type.hashCode ^
-      summary.hashCode ^
-      started.hashCode ^
-      ended.hashCode ^
-      slug.hashCode ^
-      thumbnail.hashCode ^
-      tenant.hashCode;
 }

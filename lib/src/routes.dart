@@ -2,11 +2,13 @@ import 'package:ciwalk/src/view/about/about_screen.dart';
 import 'package:ciwalk/src/view/dashboard/dashboard_screen.dart';
 import 'package:ciwalk/src/view/events/event_detail_screen.dart';
 import 'package:ciwalk/src/view/events/events_screen.dart';
+import 'package:ciwalk/src/view/maps/map_screen.dart';
 import 'package:ciwalk/src/view/movies/movie_detail_screen.dart';
 import 'package:ciwalk/src/view/movies/movies_screen.dart';
 import 'package:ciwalk/src/view/onboarding/onboarding_screen.dart';
 import 'package:ciwalk/src/view/promo/promo_detail_screen.dart';
 import 'package:ciwalk/src/view/promo/promo_screen.dart';
+import 'package:ciwalk/src/view/tenant/tenant_detail_screen.dart';
 import 'package:get/route_manager.dart';
 
 final routes = [
@@ -23,4 +25,8 @@ final routes = [
   GetPage(name: MoviesScreen.routeName, page: () => MoviesScreen()),
   GetPage(
       name: MovieDetailScreen.routeName, page: () => const MovieDetailScreen()),
+  GetPage(name: MapScreen.routeName, page: () => const MapScreen()),
+  GetPage(
+      name: TenantDetailScreen.routeName,
+      page: () => const TenantDetailScreen()),
 ];

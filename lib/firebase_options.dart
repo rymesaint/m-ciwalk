@@ -63,7 +63,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '1000776229217',
     projectId: 'ciwalk',
     storageBucket: 'ciwalk.appspot.com',
-    iosClientId: '1000776229217-qs5o6bk3f4duvtc894t1bvu5809o37b7.apps.googleusercontent.com',
+    iosClientId:
+        '1000776229217-qs5o6bk3f4duvtc894t1bvu5809o37b7.apps.googleusercontent.com',
     iosBundleId: 'com.chocodev.ciwalk',
   );
 }

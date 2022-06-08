@@ -1,6 +1,8 @@
 import 'package:ciwalk/src/data/models/promo_detail/promo_detail.dart';
 import 'package:ciwalk/src/data/models/resource.dart';
+import 'package:ciwalk/src/data/models/tenant/tenant.dart';
 import 'package:ciwalk/src/repositories/promo.dart';
+import 'package:ciwalk/src/view/tenant/tenant_detail_screen.dart';
 import 'package:ciwalk/src/view_models/base.vm.dart';
 import 'package:get/get.dart';
 
@@ -28,5 +30,9 @@ class PromoDetailViewModel extends BaseViewModel {
     isLoading(false);
 
     result.value.data = response.data;
+  }
+
+  openTenant(Tenant? tenant) {
+    Get.toNamed(TenantDetailScreen.routeName, arguments: tenant);
   }
 }

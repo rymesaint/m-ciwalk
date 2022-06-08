@@ -1,14 +1,7 @@
 String getEventsQuery = """
-query getEvents(\$limit: Int, \$start: Int = 0, \$query: String = null, \$type: String = null, \$sortBy: String = "createdAt:desc"){
+query getEvents(\$limit: Int, \$start: Int = 0, \$where: JSON = null, \$sortBy: String = "createdAt:desc"){
     eventsConnection (
-        where: {
-            title_contains: \$query, 
-            tags: {
-                slug_contains: null
-            }, 
-            _id_ne: null,
-            type_contains: \$type,
-        }, 
+        where: \$where, 
         sort: \$sortBy, 
         limit: \$limit, 
         start: \$start

@@ -65,7 +65,8 @@ class PromoDetailScreen extends GetView<PromoDetailViewModel> {
                         .text
                         .make(),
                   ],
-                ),
+                ).onInkTap(() => controller
+                    .openTenant(controller.result.value.data?.tenant)),
                 UiSpacer.verticalSpace(space: 10),
                 HStack(
                   [

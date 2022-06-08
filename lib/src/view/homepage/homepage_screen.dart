@@ -18,7 +18,7 @@ class HomepageScreen extends GetView<HomepageViewModel> {
         HStack([
           'm-Ciwalk'.text.semiBold.xl3.make().expand(),
           IconButton(
-            onPressed: null,
+            onPressed: controller.openMap,
             icon: const Icon(Icons.map_rounded),
             color: primaryColor,
           ),

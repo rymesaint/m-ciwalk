@@ -1,8 +1,7 @@
-import 'package:collection/collection.dart';
+import 'package:ciwalk/src/data/models/thumbnail.dart';
 import 'package:intl/intl.dart';
 
 import 'tag.dart';
-import 'thumbnail.dart';
 
 class EventDetail {
   String? id;
@@ -82,28 +81,4 @@ class EventDetail {
       : DateTime.now().isAfter(DateTime.tryParse(ended.toString())!) == true
           ? 'Finished'
           : '$startedFormat - $endedFormat';
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(other, this)) return true;
-    if (other is! EventDetail) return false;
-    final mapEquals = const DeepCollectionEquality().equals;
-    return mapEquals(other.toJson(), toJson());
-  }
-
-  @override
-  int get hashCode =>
-      id.hashCode ^
-      title.hashCode ^
-      slug.hashCode ^
-      body.hashCode ^
-      summary.hashCode ^
-      started.hashCode ^
-      ended.hashCode ^
-      createdAt.hashCode ^
-      updatedAt.hashCode ^
-      type.hashCode ^
-      gallery.hashCode ^
-      thumbnail.hashCode ^
-      tags.hashCode;
 }

@@ -1,21 +1,21 @@
-class Thumbnail {
-  String? name;
+class Gallery {
   String? publicId;
+  String? id;
   String? provider;
   String? url;
 
-  Thumbnail({this.name, this.publicId, this.provider, this.url});
+  Gallery({this.publicId, this.id, this.provider, this.url});
 
-  factory Thumbnail.fromJson(Map<String, dynamic> json) => Thumbnail(
-        name: json['name'] as String?,
+  factory Gallery.fromJson(Map<String, dynamic> json) => Gallery(
         publicId: json['public_id'] as String?,
+        id: json['_id'] as String?,
         provider: json['provider'] as String?,
         url: json['url'] as String?,
       );
 
   Map<String, dynamic> toJson() => {
-        'name': name,
         'public_id': publicId,
+        '_id': id,
         'provider': provider,
         'url': url,
       };

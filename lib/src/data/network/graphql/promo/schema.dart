@@ -1,15 +1,10 @@
 String getPromosQuery = """
-query getPromos(\$limit: Int = 10, \$start: Int = null, \$sortBy: String = "createdAt:desc", \$query: String = null){
+query getPromos(\$limit: Int = 10, \$start: Int = null, \$sortBy: String = "createdAt:desc", \$where: JSON = null){
     promotionsConnection (
-      where: {
-        title_contains: \$query, 
-        tags: {slug_contains: null}, 
-        _id_ne: null, 
-        type: null, 
-        tenant: {slug_contains: null}}, 
-        sort: \$sortBy, 
-        limit: \$limit, 
-        start: \$start
+      where: \$where, 
+      sort: \$sortBy, 
+      limit: \$limit, 
+      start: \$start
     ) {
         values {
             id
