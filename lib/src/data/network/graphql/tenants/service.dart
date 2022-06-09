@@ -26,7 +26,8 @@ class TenantService {
             "tags": const {
               "slug_contains": null,
             }
-          }
+          },
+          "limit": 100,
         },
       ),
     );

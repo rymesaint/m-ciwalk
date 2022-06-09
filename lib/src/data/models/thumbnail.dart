@@ -1,3 +1,5 @@
+import 'package:ciwalk/src/consts/config.dart';
+
 class Thumbnail {
   String? name;
   String? publicId;
@@ -19,4 +21,12 @@ class Thumbnail {
         'provider': provider,
         'url': url,
       };
+
+  String? get imageUrl {
+    if (provider == 'local') {
+      return '${Config.baseImage}$url';
+    } else {
+      return url;
+    }
+  }
 }

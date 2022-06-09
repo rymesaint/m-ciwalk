@@ -2,10 +2,11 @@ import 'package:ciwalk/src/data/models/event/event.dart';
 import 'package:ciwalk/src/data/models/movie/movie.dart';
 import 'package:ciwalk/src/data/models/promo/promo.dart';
 import 'package:ciwalk/src/data/models/resource.dart';
+import 'package:ciwalk/src/data/models/tenant/tag.dart';
 import 'package:ciwalk/src/repositories/event.dart';
 import 'package:ciwalk/src/repositories/movie.dart';
 import 'package:ciwalk/src/repositories/promo.dart';
-import 'package:ciwalk/src/view/about/about_screen.dart';
+import 'package:ciwalk/src/repositories/tag.dart';
 import 'package:ciwalk/src/view/events/event_detail_screen.dart';
 import 'package:ciwalk/src/view/events/events_screen.dart';
 import 'package:ciwalk/src/view/maps/map_screen.dart';
@@ -13,7 +14,9 @@ import 'package:ciwalk/src/view/movies/movie_detail_screen.dart';
 import 'package:ciwalk/src/view/movies/movies_screen.dart';
 import 'package:ciwalk/src/view/promo/promo_detail_screen.dart';
 import 'package:ciwalk/src/view/promo/promo_screen.dart';
+import 'package:ciwalk/src/view/tags/tags_screen.dart';
 import 'package:ciwalk/src/view_models/base.vm.dart';
+import 'package:ciwalk/src/view_models/dashboard.vm.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:get/get.dart';
 
@@ -22,16 +25,24 @@ class HomepageViewModel extends BaseViewModel {
   final loadingEvent = false.obs;
   final loadingPromo = false.obs;
   final loadingMovie = false.obs;
+  final tagResults = Resource<List<Tag>>(data: []).obs;
   final eventResults = Resource<List<Event>>(data: []).obs;
   final promoResults = Resource<List<Promo>>(data: []).obs;
   final movieResults = Resource<List<Movie>>(data: []).obs;
+  final dashboardVm = Get.put(DashboardViewModel());
 
   @override
   void onInit() {
+    _fetchTags();
     _fetchEvents();
     _fetchPromos();
     _fetchMovies();
     super.onInit();
+  }
+
+  _fetchTags() async {
+    var response = await TagRepository().getTags();
+    tagResults.update((val) => val?.data = response.data);
   }
 
   _fetchEvents() async {
@@ -71,6 +82,10 @@ class HomepageViewModel extends BaseViewModel {
     Get.toNamed(MoviesScreen.routeName);
   }
 
+  openTag(Tag tag) {
+    Get.toNamed(TagsScreen.routeName, arguments: tag);
+  }
+
   openPromoDetail(Promo promo) async {
     await _firebaseAnalytics.logSelectPromotion(
       promotionName: promo.title,
@@ -85,11 +100,11 @@ class HomepageViewModel extends BaseViewModel {
     Get.toNamed(MovieDetailScreen.routeName, arguments: movie);
   }
 
-  openAbout() {
-    Get.toNamed(AboutScreen.routeName);
-  }
-
   openMap() {
     Get.toNamed(MapScreen.routeName);
+  }
+
+  openMenu() {
+    dashboardVm.openMenu();
   }
 }

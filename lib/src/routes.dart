@@ -8,6 +8,7 @@ import 'package:ciwalk/src/view/movies/movies_screen.dart';
 import 'package:ciwalk/src/view/onboarding/onboarding_screen.dart';
 import 'package:ciwalk/src/view/promo/promo_detail_screen.dart';
 import 'package:ciwalk/src/view/promo/promo_screen.dart';
+import 'package:ciwalk/src/view/tags/tags_screen.dart';
 import 'package:ciwalk/src/view/tenant/tenant_detail_screen.dart';
 import 'package:get/route_manager.dart';
 
@@ -29,4 +30,5 @@ final routes = [
   GetPage(
       name: TenantDetailScreen.routeName,
       page: () => const TenantDetailScreen()),
+  GetPage(name: TagsScreen.routeName, page: () => TagsScreen()),
 ];

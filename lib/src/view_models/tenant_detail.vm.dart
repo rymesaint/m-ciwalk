@@ -9,7 +9,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:get/get.dart';
 
-class TenantViewModel extends BaseViewModel {
+class TenantDetailViewModel extends BaseViewModel {
   final tenant = Tenant(
     gallery: [],
     locations: [],
@@ -20,7 +20,7 @@ class TenantViewModel extends BaseViewModel {
   ).obs;
   final tenantType = ''.obs;
 
-  TenantViewModel() {
+  TenantDetailViewModel() {
     tenant(Get.arguments);
     tenantType(Get.arguments?.type);
   }

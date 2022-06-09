@@ -21,7 +21,7 @@ class EventCard extends StatelessWidget {
       child: VStack([
         ZStack([
           CachedNetworkImage(
-            imageUrl: event.thumbnail!.url.toString(),
+            imageUrl: event.thumbnail!.imageUrl!,
           ).cornerRadius(20),
           (event.type ?? '')
               .text
@@ -42,7 +42,14 @@ class EventCard extends StatelessWidget {
             size: 14,
           ),
           UiSpacer.horizontalSpace(space: 5),
-          (event.statusEvent ?? '-').text.gray500.make(),
+          (event.statusEvent ?? '-')
+              .text
+              .xs
+              .gray500
+              .ellipsis
+              .maxLines(2)
+              .make()
+              .expand(),
         ]),
       ]).p4(),
     );

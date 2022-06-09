@@ -47,6 +47,7 @@ dependencies:
   onboarding: ^3.1.0
   sentry_flutter: ^6.5.1
   share_plus: ^4.0.7
+  shrink_sidemenu: ^2.0.0+2-null-safety
   url_launcher: ^6.1.2
   velocity_x: ^3.5.1
 

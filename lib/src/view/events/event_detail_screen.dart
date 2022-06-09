@@ -23,7 +23,7 @@ class EventDetailScreen extends GetView<EventDetailViewModel> {
                   pinned: true,
                   flexibleSpace: FlexibleSpaceBar(
                     background: CachedNetworkImage(
-                      imageUrl: controller.result.value.data!.thumbnail!.url
+                      imageUrl: controller.result.value.data!.thumbnail!.imageUrl
                           .toString(),
                       fit: BoxFit.fill,
                     ).cornerRadius(20),

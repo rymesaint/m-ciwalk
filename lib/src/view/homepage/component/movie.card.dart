@@ -21,7 +21,7 @@ class MovieCard extends StatelessWidget {
       onTap: onTap,
       child: VStack([
         CachedNetworkImage(
-          imageUrl: movie.thumbnail!.url.toString(),
+          imageUrl: movie.thumbnail!.imageUrl!,
         ).cornerRadius(20),
         UiSpacer.verticalSpace(space: 10),
         (movie.title ?? '-').text.ellipsis.color(textColor!).maxLines(2).make(),

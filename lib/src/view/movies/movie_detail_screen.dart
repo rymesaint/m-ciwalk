@@ -24,8 +24,7 @@ class MovieDetailScreen extends GetView<MovieDetailViewModel> {
                 ZStack(
                   [
                     CachedNetworkImage(
-                      imageUrl: controller.result.value.data!.thumbnail!.url
-                          .toString(),
+                      imageUrl: controller.result.value.data!.thumbnail!.imageUrl!,
                       fit: BoxFit.cover,
                     ).h(300).wFull(context),
                     VStack([

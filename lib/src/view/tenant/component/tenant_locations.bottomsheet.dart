@@ -1,10 +1,10 @@
 import 'package:ciwalk/src/shared_view/default.bottomsheet.dart';
-import 'package:ciwalk/src/view_models/tenant.vm.dart';
+import 'package:ciwalk/src/view_models/tenant_detail.vm.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class TenantLocationsBottomsheet extends StatelessWidget {
-  final TenantViewModel vm;
+  final TenantDetailViewModel vm;
   const TenantLocationsBottomsheet({Key? key, required this.vm})
       : super(key: key);
 

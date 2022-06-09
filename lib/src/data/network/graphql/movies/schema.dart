@@ -1,6 +1,10 @@
 String getMoviesQuery = """
 query getMovies(\$sortBy: String = "createdAt:desc", \$limit: Int) {
-    moviesConnection (sort: \$sortBy, limit: \$limit, where: {_id_ne: null}) {
+    moviesConnection (
+      sort: \$sortBy, 
+      limit: \$limit, 
+      where: {_id_ne: null}
+    ) {
         values {
             id
             age

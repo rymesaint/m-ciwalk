@@ -1,7 +1,9 @@
 String getTenantsQuery = """
-query getTenants(\$where: JSON = null) {
+query getTenants(\$where: JSON = null, \$start: Int = null, \$limit: Int = 16) {
     tenantsConnection (
-      where: \$where, 
+      where: \$where,
+      limit: \$limit,
+      start: \$start,
       sort: "createdAt:desc"
     ) 
       {
@@ -15,6 +17,16 @@ query getTenants(\$where: JSON = null) {
                 name
                 slug
             }
+            thumbnail {
+              name,
+              public_id,
+              provider,
+              url
+            }
+        }
+        aggregate {
+            count
+            totalCount
         }
     }
 }

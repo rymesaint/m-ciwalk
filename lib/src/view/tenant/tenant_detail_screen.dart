@@ -1,18 +1,18 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ciwalk/src/misc/ui.spacer.dart';
 import 'package:ciwalk/src/themes/colors.dart';
-import 'package:ciwalk/src/view_models/tenant.vm.dart';
+import 'package:ciwalk/src/view_models/tenant_detail.vm.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-class TenantDetailScreen extends GetView<TenantViewModel> {
+class TenantDetailScreen extends GetView<TenantDetailViewModel> {
   static const routeName = '/tenant/detail';
   const TenantDetailScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    Get.put(TenantViewModel());
+    Get.put(TenantDetailViewModel());
     return Scaffold(
       appBar: AppBar(
         title: (controller.tenant.value.name ?? '-').text.make(),
@@ -38,7 +38,7 @@ class TenantDetailScreen extends GetView<TenantViewModel> {
                   .h(180)
                   .wFull(context)
               : CachedNetworkImage(
-                  imageUrl: controller.tenant.value.thumbnail!.url!,
+                  imageUrl: controller.tenant.value.thumbnail!.imageUrl!,
                   fit: BoxFit.contain,
                 ).centered().h(180),
           UiSpacer.verticalSpace(),
@@ -113,7 +113,7 @@ class TenantDetailScreen extends GetView<TenantViewModel> {
                     final tenant = controller.relatedTenants.value.data?[index];
                     return VStack([
                       CachedNetworkImage(
-                        imageUrl: tenant!.thumbnail!.url!,
+                        imageUrl: tenant!.thumbnail!.imageUrl!,
                         fit: BoxFit.contain,
                       ).h(140).cornerRadius(20),
                       UiSpacer.verticalSpace(space: 5),

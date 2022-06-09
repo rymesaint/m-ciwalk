@@ -23,8 +23,8 @@ class PromoDetailScreen extends GetView<PromoDetailViewModel> {
                   pinned: true,
                   flexibleSpace: FlexibleSpaceBar(
                     background: CachedNetworkImage(
-                      imageUrl: controller.result.value.data!.thumbnail!.url
-                          .toString(),
+                      imageUrl:
+                          controller.result.value.data!.thumbnail!.imageUrl!,
                       fit: BoxFit.fill,
                     ).cornerRadius(20),
                   ),

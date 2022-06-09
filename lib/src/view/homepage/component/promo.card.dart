@@ -21,7 +21,7 @@ class PromoCard extends StatelessWidget {
       child: VStack([
         ZStack([
           CachedNetworkImage(
-            imageUrl: promo.thumbnail!.url.toString(),
+            imageUrl: promo.thumbnail!.imageUrl.toString(),
           ).cornerRadius(20),
           (promo.statusPromo ?? '')
               .text
