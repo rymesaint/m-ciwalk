@@ -8,7 +8,7 @@ ThemeData lightTheme = ThemeData(
   primaryColor: primaryColor,
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
-      primary: primaryColor,
+      backgroundColor: primaryColor,
     ),
   ),
   splashColor: primaryColor,

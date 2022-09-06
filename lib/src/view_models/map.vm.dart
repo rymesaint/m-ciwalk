@@ -20,6 +20,7 @@ class MapViewModel extends BaseViewModel {
     error: null,
     metadata: null,
   ).obs;
+  final loadingTenant = false.obs;
 
   @override
   void onInit() {
@@ -43,9 +44,11 @@ class MapViewModel extends BaseViewModel {
   }
 
   _getTenants(Location? location) async {
+    loadingTenant(true);
     var response =
         await TenantRepository().getTenants(locationId: location!.id);
     tenants(response);
+    loadingTenant(false);
   }
 
   openTenant(Tenant? tenant) {

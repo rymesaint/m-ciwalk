@@ -32,7 +32,7 @@ class PromoService {
             "title_contains": query,
             "tags": const {"slug_contains": null},
             "_id_ne": null,
-            "type": type,
+            // "type": type,
             "tenant": const {"slug_contains": null},
           },
           "sortBy": sortBy,

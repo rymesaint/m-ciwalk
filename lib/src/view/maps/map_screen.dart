@@ -80,18 +80,25 @@ class MapScreen extends GetView<MapViewModel> {
           )
         ],
         body: Obx(
-          () => ListView.builder(
-            itemCount: controller.tenants.value.data?.length,
-            itemBuilder: (context, index) {
-              final tenant = controller.tenants.value.data?[index];
-              return ListTile(
-                leading: (tenant?.coordinate ?? '').text.make(),
-                title: (tenant?.name ?? '-').text.make(),
-                subtitle: (tenant?.type ?? '-').text.make(),
-                onTap: () => controller.openTenant(tenant),
-              );
-            },
-          ),
+          () => controller.loadingTenant.value == true
+              ? CircularProgressIndicator(
+                  color: primaryColor,
+                ).centered()
+              : controller.tenants.value.data == null ||
+                      controller.tenants.value.data!.isEmpty
+                  ? 'Tidak ada tenant di bagian ini.'.text.makeCentered()
+                  : ListView.builder(
+                      itemCount: controller.tenants.value.data?.length,
+                      itemBuilder: (context, index) {
+                        final tenant = controller.tenants.value.data?[index];
+                        return ListTile(
+                          leading: (tenant?.coordinate ?? '').text.make(),
+                          title: (tenant?.name ?? '-').text.make(),
+                          subtitle: (tenant?.type ?? '-').text.make(),
+                          onTap: () => controller.openTenant(tenant),
+                        );
+                      },
+                    ),
         ).safeArea(),
       ),
     );
